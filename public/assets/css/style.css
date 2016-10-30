@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* ---------------------------------
+ ## VARIABLES
+ ------------------------------- */
+/* ---------------------------------
+ ## Colores
+ ------------------------------- */
+body {
+  background: #e6e6e6; }
+
+/* ---------------------------------
+ ##Variables
+ ------------------------------- */
+/* ---------------------------------
+ ##Custom
+ ------------------------------- */
+/* ---------------------------------
+ ##MENÚ
+ ------------------------------- */
+.admin-menu__user-name {
+  font-size: 1.5rem;
+  color: black; }
+
+.admin-menu__img-logo img {
+  width: 200px; }
+
+/* ---------------------------------
+ ## Cajas
+ ------------------------------- */
+.box-crud__container {
+  text-align: center;
+  font-size: 2rem; }
+  .box-crud__container input {
+    width: 100%;
+    padding: 1rem; }
+  .box-crud__container input[type='submit'] {
+    font-size: 4rem; }
+
+/* ---------------------------------
+ ## $Fixs
+ ------------------------------- */
+.over {
+  overflow: hidden; }
+
+/* ---------------------------------
+ ## Base
+ ------------------------------- */
+.view-login {
+  background: #2f2f2f; }
+
+/* ---------------------------------
+ ## Base
+ ------------------------------- */
+.box-login {
+  position: relative;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  text-align: center; }
+  .box-login h2 {
+    color: white; }
+
+.form {
+  padding: 1rem;
+  text-align: center; }
+  .form input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid black;
+    margin-bottom: 1rem; }
+  .form label {
+    font-size: 2rem;
+    color: white; }
+  .form button {
+    width: 100%; }
+
+/* ---------------------------------
+ ## Variables
+ ------------------------------- */
+/* ---------------------------------
+ ## Colores
+ ------------------------------- */
+.box-objetivo {
+  text-align: center; }
