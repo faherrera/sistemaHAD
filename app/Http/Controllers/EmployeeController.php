@@ -102,6 +102,12 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $employee = Employee::find($id);
+
+        $employee->delete();
+
+        Session::flash('message','Empleado Borrado correctamente.');
+        return Redirect('/empleados');
+
     }
 }

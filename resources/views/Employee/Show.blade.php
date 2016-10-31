@@ -43,7 +43,9 @@
                                 </ul>
                                 <p>
                                     {!! link_to_route('empleados.edit', $title = "Editar", $parameters = $employee->id, $attributes=['class'=>'btn btn-success'])!!}
-                                    <a href="./objetivos/detalle.html" class="btn btn-danger" role="button"> Eliminar</a>
+                                    {!! Form::open(['route'=>['empleados.destroy',$employee->id],'method'=>'DELETE']) !!}
+                                        {!! Form::submit('Elimnar',['class'=>'btn btn-danger'])!!}    
+                                    {!! Form::close() !!}
                                 </p>
                             </div>
                         </div>
