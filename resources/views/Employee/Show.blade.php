@@ -9,42 +9,40 @@
                     <!--  Objetivo-->
                     <div class="col-sm-12 col-md-4 box-objetivo">
                         <div class="thumbnail">
-                            <img src="../assets/images/empleados/empleado-default2.png" alt="...">
+                            <img src="/assets/images/uploads/{{$employee->path}}" alt="...">
                             <div class="caption">
-                                <h3 style="text-transform: uppercase;">Juan Alberto Perez</h3>
+                                <h3 style="text-transform: uppercase;">{{$employee->nombre}} {{$employee->apellido}}</h3>
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-barcode"></i>
-                                        <strong>Codigo Legajo: </strong> 00001
+                                        <strong>Codigo Legajo: </strong> {{$employee->legajo}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-map-marker"></i>
-                                        <strong>Direccion: </strong> Santiago 81
+                                        <strong>Direccion: </strong> {{$employee->direccion}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-phone-alt"></i>
-                                        <strong>  Telefono: </strong> (0381) 4839202
+                                        <strong>  Telefono: </strong> {{$employee->telefono}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-usd"></i>
-                                        <strong>  Sumatoria Adelanto: </strong> $300
+                                        <strong>  Anticipo de dinero: </strong> ${{$employee->advanced}}
 
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="glyphicon glyphicon-wrench"></i>
+                                        <strong>Cargo del empleado: </strong> <small style="text-transform: uppercase;">{{$employee->puesto}}</small>
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-pushpin"></i>
                                         <strong>  Notas: </strong>
 
                                     </li>
-                                    <textarea name="notas" rows="8" cols="40">
-
-                                    </textarea>
-                                    <li class="list-group-item">
-                                        <i class="glyphicon glyphicon-wrench"></i>
-                                        <strong>Cargo del empleado: </strong> Fijo
-                                    </li>
+                                    <textarea name="notas" readonly="readonly" class="form-control " rows="3" style="resize:none;">{{$employee->notes}}</textarea>
                                 </ul>
                                 <p>
-                                    <a href="./objetivos/detalle.html" class="btn btn-primary" role="button">Editar</a>
+                                    {!! link_to_route('empleados.edit', $title = "Editar", $parameters = $employee->id, $attributes=['class'=>'btn btn-success'])!!}
                                     <a href="./objetivos/detalle.html" class="btn btn-danger" role="button"> Eliminar</a>
                                 </p>
                             </div>

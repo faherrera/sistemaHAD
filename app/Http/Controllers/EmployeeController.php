@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
 use SistemaHAD\Http\Controllers\Controller;
-
+use SistemaHAD\Employee;
+use Session;
+use Redirect;
 class EmployeeController extends Controller
 {
     /**
@@ -16,7 +18,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('Employee.listado');
+        $employees = Employee::All();
+
+        return view('Employee.listado',compact('employees'));
     }
 
     /**
@@ -26,7 +30,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Employee.Create');
+
     }
 
     /**
@@ -37,7 +42,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $employee = Employee::create($request->all());
+        $employee->save();
+
+        Session::flash('message','Empleado correctamente cargado.');
+        return Redirect('/empleados');
     }
 
     /**
@@ -48,7 +58,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::find($id);
+
+        return view('Employee.Show',compact('employee'));
     }
 
     /**
@@ -59,7 +71,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::find($id);
+        return view('Employee.Edit',compact('employee'));
+
     }
 
     /**
@@ -71,7 +85,13 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->fill($request->all());
+        $employee->save();
+        // return $request->all();
+        Session::flash('message','Empleado Editado correctamente.');
+        return Redirect('/empleados');
+
     }
 
     /**
