@@ -9,43 +9,30 @@
                     <!--  Objetivo-->
                     <div class="col-sm-12 col-md-4 box-objetivo">
                         <div class="thumbnail">
-                            <img src="/assets/images/uploads/{{$employee->path}}" alt="...">
+                            <img src="/assets/images/uploads/{{$goal->path}}" alt="...">
                             <div class="caption">
-                                <h3 style="text-transform: uppercase;">{{$employee->nombre}} {{$employee->apellido}}</h3>
+                                <h3 style="text-transform: uppercase;">{{$goal->nombre}}</h3>
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-barcode"></i>
-                                        <strong>Codigo Legajo: </strong> {{$employee->legajo}}
+                                        <strong>Codigo Objetivo: </strong> {{$goal->cod_legajo}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-map-marker"></i>
-                                        <strong>Direccion: </strong> {{$employee->direccion}}
+                                        <strong>Direccion: </strong> {{$goal->direccion}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-phone-alt"></i>
-                                        <strong>  Telefono: </strong> {{$employee->telefono}}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <i class="glyphicon glyphicon-usd"></i>
-                                        <strong>  Anticipo de dinero: </strong> ${{$employee->advanced}}
-
+                                        <strong>  Telefono: </strong> {{$goal->telefono}}
                                     </li>
                                     <li class="list-group-item">
                                         <i class="glyphicon glyphicon-wrench"></i>
-                                        <strong>Cargo del empleado: </strong> <small style="text-transform: uppercase;">{{$employee->puesto}}</small>
+                                        <strong>Representante: </strong> {{$goal->representante}}
                                     </li>
-                                    <li class="list-group-item">
-                                        <i class="glyphicon glyphicon-pushpin"></i>
-                                        <strong>  Notas: </strong>
-
-                                    </li>
-                                    <textarea name="notas" readonly="readonly" class="form-control " rows="3" style="resize:none;">{{$employee->notes}}</textarea>
                                 </ul>
                                 <p>
-                                    {!! link_to_route('empleados.edit', $title = "Editar", $parameters = $employee->id, $attributes=['class'=>'btn btn-success'])!!}
-                                    {!! Form::open(['route'=>['empleados.destroy',$employee->id],'method'=>'DELETE']) !!}
-                                        {!! Form::submit('Elimnar',['class'=>'btn btn-danger'])!!}
-                                    {!! Form::close() !!}
+                                    <a href="./objetivos/detalle.html" class="btn btn-primary" role="button">Editar</a>
+                                    <a href="./objetivos/detalle.html" class="btn btn-danger" role="button"> Eliminar</a>
                                 </p>
                             </div>
                         </div>
@@ -58,44 +45,46 @@
                 <!--  Detalle informacion-->
                 <div class="box-detalle__item--informacion col-sm-12 col-md-8">
                     <!-- Tabla Empleados -->
-                        <div class="panel panel-default table-responsive">
+                    <div class="table-responsive">
+                        <div class="panel panel-default">
                             <!-- Default panel contents -->
-                            <div class="panel-heading"><strong>Objetivos asignados de manera fija: </strong> <span class="badge">{{count($getGoal)}}</span></div>
-                            @if (count($getGoal) > 0)
-                                @foreach ($getGoal as $relacion)
-                                <!-- Table -->
+                                <div class="panel-heading"><strong>Empleados Fijos: {{ count($getEmployees)}}</strong></div>
+                                @if (count($getEmployees) > 0)
+                                    <!-- Table -->
+                                    @foreach ($getEmployees as $getEmployee)
                                         <table class="table ">
                                             <thead>
                                                 <tr>
-                                                    <th>Codigo Objetivo</th>
-                                                    <th>Nombre</th>
-                                                    <th>Direccion</th>
-                                                    <th> Ver objetivo</th>
+                                                    <th>Codigo Legajo</th>
+                                                    <th>Nombre y apellido</th>
+                                                    <th>Telefono</th>
+                                                    <th> Ver empleado</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                        <td><label class="label label-info">{{$relacion->goal->cod_legajo}}</label></td>
-                                                        <td>
-                                                                {{$relacion->goal->nombre}}
-                                                        </td>
-                                                        <td>{{$relacion->goal->direccion}}</td>
-                                                        <td>
-                                                            <a href="/objetivos/{{$relacion->goal->id}}" class="btn btn-success"> Ver detalle</a>
-                                                        </td>
-                                                </tr>
 
+                                                <tr>
+                                                    <td><label class="label label-info"> {{$getEmployee->employee->legajo}}</label></td>
+                                                    <td>{{$getEmployee->employee->nombre}} {{$getEmployee->employee->apellido}}</td>
+                                                    <td>{{$getEmployee->employee->telefono}}</td>
+                                                    <td>
+                                                        <a href="/empleados/{{$getEmployee->employee->id}}">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
-                                @endforeach
-                            @endif
+                                    @endforeach
+                                @endif
 
-                            </div>
+                                </div>
                         </div>
-                    <!-- Tabla Empleados -->
+                        <!-- Tabla Empleados -->
 
                         <!-- Tabla Turnos -->
-                            <div class="panel panel-default table-responsive">
+                        <div class="table-responsive">
+                            <div class="panel panel-default">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading"><strong>Turnos del mes</strong></div>
                                 <!-- Table -->
@@ -312,9 +301,10 @@
 
                         <!-- Tabla Turnos -->
 
-                <!--  Detalle informacion-->
+                    </div>
+                    <!--  Detalle informacion-->
             </section>
 
         </section>
     <!--  Section Content Yield-->
-@endsection
+@endSection

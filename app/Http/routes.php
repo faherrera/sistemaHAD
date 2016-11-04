@@ -17,3 +17,8 @@ Route::get('/', function () {
 
 
 Route::resource('empleados','EmployeeController');
+
+Route::resource('objetivos','GoalController');
+
+//Relacion
+Route::resource('relacionEG','Employee_GoalController',['except'=>['index']]);

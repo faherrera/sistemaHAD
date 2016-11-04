@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
 use SistemaHAD\Http\Controllers\Controller;
-
+use Session;
+use Redirect;
+use SistemaHAD\Goal;
+use SistemaHAD\Employee_Goal;
 class GoalController extends Controller
 {
     /**
@@ -16,7 +19,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        //
+        $goals = Goal::all();
+        return view('Goal.index',compact('goals'));
     }
 
     /**
@@ -26,7 +30,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('Goal.create');
     }
 
     /**
@@ -37,7 +41,17 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if (empty($request->path)) {
+            return "Está vacio.";
+        }
+
+        $goal = Goal::Create($request->all());
+        $goal->save();
+
+
+        Session::flash('message','Objetivo creado correctamente');
+        return Redirect::to('/objetivos');
     }
 
     /**
@@ -48,7 +62,10 @@ class GoalController extends Controller
      */
     public function show($id)
     {
-        //
+        $goal = Goal::find($id);
+        $getEmployees = Employee_Goal::where('goal_id', $id)->get();
+
+        return view('Goal.show',compact('goal','getEmployees'));
     }
 
     /**

@@ -75,6 +75,16 @@
                   <li><a href="#">Ver listado de empleados</a></li>
                 </ul>
               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Enlazar Objetivos y empleados <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Crear Enlace</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Ver enlace</a></li>
+                </ul>
+              </li>
             </ul>
             <!--
             <form class="navbar-form navbar-left" role="search">
@@ -116,7 +126,8 @@
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('/assets/js/bootstrap.min.js')}}"></script>
 <!--  SCRIPTS-->
-
+@section('scripts')
+@show
 
 </body>
 

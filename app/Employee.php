@@ -16,5 +16,7 @@ class Employee extends Model
         \Storage::disk('local')->put($name,\File::get($path));
     }
 
-
+    public function employee_goals(){
+        return $this->hasMany('SistemaHAD\Employee_Goal');
+    }
 }

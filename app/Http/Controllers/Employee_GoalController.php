@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
 use SistemaHAD\Http\Controllers\Controller;
-use SistemaHAD\Employee;
-use SistemaHAD\Goal;
 use SistemaHAD\Employee_Goal;
+use SistemaHAD\Goal;
+use SistemaHAD\Employee;
+use DB;
 use Session;
 use Redirect;
-class EmployeeController extends Controller
+class Employee_GoalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +21,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::All();
-
-        return view('Employee.listado',compact('employees'));
+        //
     }
 
     /**
@@ -32,7 +31,11 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('Employee.Create');
+        $employees = Employee::select(
+                    DB::raw("CONCAT(employees.nombre,' ',employees.apellido) AS full_name , id")
+                    )->lists('full_name','id');
+        $goals = Goal::lists('direccion','id');
+        return view('Employee_Goal.Create',compact('employees','goals'));
 
     }
 
@@ -45,11 +48,12 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $employee = Employee::create($request->all());
-        $employee->save();
 
-        Session::flash('message','Empleado correctamente cargado.');
-        return Redirect('/empleados');
+        $employee_goal = Employee_Goal::Create($request->all());
+        $employee_goal->save();
+
+        Session::flash('message','Creada la relacion entre Empleado/Objetivo');
+        return Redirect::to('/objetivos');
     }
 
     /**
@@ -60,13 +64,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-         $employee = Employee::find($id);
-         $getGoal = Employee_Goal::where('employee_id',$id)->get();
-        // $relacion = Employee_Goal::select('goal_id')->where('employee_id','=',$id)->get();
-        // $goal = Goal::find($relacion);
-        // $goal_employees = Employee_Goal::getEmployee($id)->get();
-
-        return view('Employee.Show',compact('employee','getGoal'));
+        //
     }
 
     /**
@@ -77,9 +75,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::find($id);
-        return view('Employee.Edit',compact('employee'));
-
+        //
     }
 
     /**
@@ -91,13 +87,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $employee = Employee::find($id);
-        $employee->fill($request->all());
-        $employee->save();
-        // return $request->all();
-        Session::flash('message','Empleado Editado correctamente.');
-        return Redirect('/empleados');
-
+        //
     }
 
     /**
@@ -108,12 +98,6 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = Employee::find($id);
-
-        $employee->delete();
-
-        Session::flash('message','Empleado Borrado correctamente.');
-        return Redirect('/empleados');
-
+        //
     }
 }

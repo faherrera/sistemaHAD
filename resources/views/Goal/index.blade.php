@@ -1,123 +1,39 @@
 @extends('layouts.admin')
     @section('content')
         <section class="content over">
-
+            @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>{{Session::get('message')}}</strong>
+                </div>
+            @endif
             <div class="row">
 
+                @foreach($goals as $goal)
                 <!--  Objetivo-->
                   <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
+                      <img src="/assets/images/uploads/{{$goal->path}}" alt="...">
                       <div class="caption">
-                        <h3>Objetivo</h3>
+                        <h3>{{$goal->nombre}}</h3>
                         <ul>
                             <li>
-                                <strong>Direccion: </strong> Santiago 81
+                                <strong>Codigo de objetivo: </strong> {{$goal->cod_legajo}}
                             </li>
                             <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
+                                <strong>Direccion: </strong> {{$goal->direccion}}
+                            </li>
+                            <li>
+                                <strong>Telefono: </strong>{{$goal->telefono}}
                             </li>
                         </ul>
-                        <p><a href="../objetivos/detalle.html" class="btn btn-primary" role="button">Ver detalles</a></p>
+                        <p><a href="/objetivos/{{$goal->id}}" class="btn btn-primary" role="button">Ver detalles</a></p>
                       </div>
                     </div>
                   </div>
                   <!--  Objetivo-->
-                <!--  Objetivo-->
-                  <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Objetivo</h3>
-                        <ul>
-                            <li>
-                                <strong>Direccion: </strong> Santiago 81
-                            </li>
-                            <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
-                            </li>
-                        </ul>
-                        <p><a href="#" class="btn btn-primary" role="button">Ver detalles</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--  Objetivo-->
-                <!--  Objetivo-->
-                  <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Objetivo</h3>
-                        <ul>
-                            <li>
-                                <strong>Direccion: </strong> Santiago 81
-                            </li>
-                            <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
-                            </li>
-                        </ul>
-                        <p><a href="#" class="btn btn-primary" role="button">Ver detalles</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--  Objetivo-->
-                <!--  Objetivo-->
-                  <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Objetivo</h3>
-                        <ul>
-                            <li>
-                                <strong>Direccion: </strong> Santiago 81
-                            </li>
-                            <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
-                            </li>
-                        </ul>
-                        <p><a href="#" class="btn btn-primary" role="button">Ver detalles</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--  Objetivo-->
-                <!--  Objetivo-->
-                  <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Objetivo</h3>
-                        <ul>
-                            <li>
-                                <strong>Direccion: </strong> Santiago 81
-                            </li>
-                            <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
-                            </li>
-                        </ul>
-                        <p><a href="#" class="btn btn-primary" role="button">Ver detalles</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--  Objetivo-->
-                <!--  Objetivo-->
-                  <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                      <img src="../assets/images/objetivos/santiago81.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Objetivo</h3>
-                        <ul>
-                            <li>
-                                <strong>Direccion: </strong> Santiago 81
-                            </li>
-                            <li>
-                                <strong>Representante: </strong> Juan Alberto Perez
-                            </li>
-                        </ul>
-                        <p><a href="#" class="btn btn-primary" role="button">Ver detalles</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!--  Objetivo-->
+                @endforeach
+
 
 
             </div>
