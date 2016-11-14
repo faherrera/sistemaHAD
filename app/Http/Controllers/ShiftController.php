@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
 use SistemaHAD\Http\Controllers\Controller;
-
+use Carbon\Carbon;
+use SistemaHAD\Employee_Goal;
+use SistemaHAD\Employee;
 class ShiftController extends Controller
 {
     /**
@@ -16,7 +18,34 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        //
+        Carbon::setLocale('es');
+        $currentDate = Carbon::now();
+
+        $employee_goals = Employee_Goal::all();
+        //Traduciendo el Mes
+        switch ($currentDate->month) {
+            case 1:
+                $mes = "Enero";
+                break;
+
+            case 2:
+                $mes = "Febrero";
+                break;
+
+            case 11:
+                $mes = "Noviembre";
+                break;
+            case 12:
+                $mes = "Diciembre";
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        //Traduciendo el Mes
+
+        return view('Shift.index',compact('currentDate','mes','employee_goals'));
     }
 
     /**
@@ -26,7 +55,7 @@ class ShiftController extends Controller
      */
     public function create()
     {
-        //
+        return view('Shift.create');
     }
 
     /**
@@ -83,5 +112,18 @@ class ShiftController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function generarTurno($id){
+
+        $employee_goal = Employee_Goal::find($id);
+        return view('Shift.Generar.Create',compact('employee_goal'));
+        // return "string";
+        // return "El id del empleado es ".$id;
+    }
+
+    public function generarTurnoCreate(Request $request){
+        return $request->all();
+
     }
 }
