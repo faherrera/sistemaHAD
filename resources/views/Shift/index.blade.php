@@ -1,6 +1,12 @@
 @extends('layouts.admin')
     @section('content')
         <section class="content">
+            @if(Session::has('message'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>{{Session::get('message')}}</strong>
+                </div>
+            @endif
             <div class="container">
                 <!-- Tabla Empleados Fijos Sin Turnos Asignados -->
                 <div class="table-responsive">
@@ -54,7 +60,7 @@
                 <div class="table-responsive">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading"><strong>Empleados con turnos asignados para el mes de {{$mes}}</strong></div>
+                        <div class="panel-heading"><strong>Empleados con turnos asignados para el mes de </strong></div>
                         <!-- Table -->
                         <table class=" table table-hover">
                             <thead>

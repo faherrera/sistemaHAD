@@ -33,25 +33,25 @@ $(document).ready(function(){
 
     // ------------------------
     $('#dtplunes').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpmartes').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpmiercoles').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpjueves').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpviernes').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpsabado').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     $('#dtpdomingo').datetimepicker({  //RELOJ
-        format: 'LT'
+        format: 'HH:mm'
     });
     // ------------------------
 

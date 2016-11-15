@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Front.index');
 });
 
 
@@ -28,6 +28,7 @@ Route::resource('relacionEG','Employee_GoalController',['except'=>['index']]);
     Route::resource('turnos','ShiftController');    // HTTP turnos
 
     Route::get('generarturno/{id}','ShiftController@generarTurno');
+    Route::get('generarturno','ShiftController@index');
     Route::post('generarturno','ShiftController@generarTurnoCreate');
 
     // Route::get('turnos/generarturno/{$id}','ShiftController@generarTurno'); //Generacion Automatica segun ID

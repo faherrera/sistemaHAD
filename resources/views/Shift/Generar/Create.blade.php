@@ -2,7 +2,16 @@
     @section('content')
     <!--  Section Content Yield-->
         <section class="content">
-
+            @if (count($errors) > 0)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li><i class="glyphicon glyphicon-fire"></i> <strong>{{ $error }}</strong></li>
+                      @endforeach
+                  </ul>
+                </div>
+            @endif
             <section class="box-objetivo-detalle__container">
 
                 <div class="jumbotron">
@@ -29,6 +38,7 @@
                         <div class="col-sm-12 col-md-6 box-objetivo">
                             <div class="panel panel-default">
                                 <h3>Para Objetivo:</h3>
+
                             </div>
                             <div class="thumbnail">
                                 <div class="caption">
@@ -57,18 +67,18 @@
                             {!!Form::label('Selecciona el mes.',null,['class'=>'form-control label label-success'])!!}
                             <div class="panel-body">
                                 <select class="form-control" name="meselegido">
-                                    <option value="january">Enero</option>
-                                    <option value="february">Febrero</option>
-                                    <option value="march">Marzo</option>
-                                    <option value="april">Abril</option>
-                                    <option value="may">Mayo</option>
-                                    <option value="june">Junio</option>
-                                    <option value="july">Julio</option>
-                                    <option value="august">Agosto</option>
-                                    <option value="september">Septiembre</option>
-                                    <option value="october">Octubre</option>
-                                    <option value="noviembre">Noviembre</option>
-                                    <option value="december">Diciembre</option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
                                 </select>
 
                             </div>
@@ -504,7 +514,12 @@
                                     </div>
                             </div>
                             {{-- GENERACION DIA DOmingo --}}
+                                {{--  EMPLEADO Y OBJETIVO--}}
+                                <input type="hidden" name="idempleado" value="{{$employee_goal->employee->id}}">
 
+                                <input type="hidden" name="idobjetivo" value="{{$employee_goal->goal->id}}">
+
+                                {{--  EMPLEADO Y OBJETIVO--}}
                             {!! Form::submit('Generar turno mensual',['class'=>'btn btn-primary']) !!}
                             {!!Form::close()!!}
                         </div>

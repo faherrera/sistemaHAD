@@ -2,7 +2,7 @@
 {!! Form::number('legajo',null,['placeholder'=>'00005','min'=>'1'])!!}
 
 {!! Form::label('Nombres') !!}
-{!! Form::text('nombre',null,['placeholder'=>'Juan Francisco','pattern'=>'[A-Za-z]{4-20}','title'=>'No puede ingresar un nombre tan corto']) !!}
+{!! Form::text('nombre',null,['placeholder'=>'Juan Francisco']) !!}
 
 {!! Form::label('Apellidos') !!}
 {!! Form::text('apellido',null,['placeholder'=>'Hernandez']) !!}
