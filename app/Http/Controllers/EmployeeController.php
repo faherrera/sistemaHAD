@@ -5,6 +5,7 @@ namespace SistemaHAD\Http\Controllers;
 use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
+use SistemaHAD\Http\Requests\EmployeeRequest;
 use SistemaHAD\Http\Controllers\Controller;
 use SistemaHAD\Employee;
 use SistemaHAD\Goal;
@@ -43,7 +44,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
         // return $request->all();
         $employee = Employee::create($request->all());
@@ -91,7 +92,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeRequest $request, $id)
     {
         $employee = Employee::find($id);
         $employee->fill($request->all());

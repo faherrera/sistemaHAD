@@ -95,19 +95,21 @@
               <button type="submit" class="btn btn-default">Enviar</button>
             </form> -->
 
-            <ul class="nav navbar-nav navbar-right">
-              <!-- <li><a href="#">Enlace #3</a></li> -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <strong class="admin-menu__user-name"><i class="glyphicon glyphicon-user"></i> Sr. Jose Barraza</strong> <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Mi perfil</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Cerrar Sesion</a></li>
-                </ul>
-              </li>
-            </ul>
+            {{-- Parte de usuario --}}
+                {{-- <ul class="nav navbar-nav navbar-right">
+                  <!-- <li><a href="#">Enlace #3</a></li> -->
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <strong class="admin-menu__user-name"><i class="glyphicon glyphicon-user"></i> Sr. Jose Barraza</strong> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Mi perfil</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Cerrar Sesion</a></li>
+                    </ul>
+                  </li>
+                </ul> --}}
+            {{-- Parte de usuario --}}
             </div>
         </nav>
         <!--  Navegacion.-->

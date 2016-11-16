@@ -22,12 +22,26 @@
                                 <h3>Para Empleado:</h3>
                             </div>
                             <div class="thumbnail">
-
+                                <img src="/assets/images/uploads/{{$employee_goal->employee->path}}" alt="...">
                                 <div class="caption">
-                                    <h3 style="text-transform: uppercase;">{{$employee_goal->employee->nombre}} {{$employee_goal->employee->apellido}}</h3>
+                                    <h4 style="text-transform: uppercase;">{{$employee_goal->employee->nombre}} {{$employee_goal->employee->apellido}}</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-barcode"></i>
+                                            <strong>Codigo Legajo: </strong> {{$employee_goal->employee->legajo}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-map-marker"></i>
+                                            <strong>Direccion: </strong> {{$employee_goal->employee->direccion}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-phone-alt"></i>
+                                            <strong>  Telefono: </strong> {{$employee_goal->employee->telefono}}
+                                        </li>
+                                    </ul>
 
                                     <p>
-                                        {!! link_to_route('empleados.show', $title = "Ver empleado", $parameters = $employee_goal->employee->id, $attributes=['class'=>'btn btn-success'])!!}
+                                        {!! link_to_route('empleados.show', $title = "Ver informacion Completa", $parameters = $employee_goal->employee->id, $attributes=['class'=>'btn btn-success'])!!}
 
                                     </p>
                                 </div>
@@ -41,12 +55,30 @@
 
                             </div>
                             <div class="thumbnail">
+                                <img src="/assets/images/uploads/{{$employee_goal->goal->path}}" alt="...">
                                 <div class="caption">
-                                    <h3 style="text-transform: uppercase;">{{$employee_goal->goal->nombre}}</h3>
-                                    <h3 style="text-transform: uppercase;">Direccion{{$employee_goal->goal->direccion}}</h3>
+                                    <h4 style="text-transform: uppercase;">{{$employee_goal->goal->nombre}} || {{$employee_goal->goal->direccion}}</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-barcode"></i>
+                                            <strong>Codigo Legajo: </strong> {{$employee_goal->goal->cod_legajo}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-map-marker"></i>
+                                            <strong>Direccion: </strong> {{$employee_goal->goal->direccion}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-phone-alt"></i>
+                                            <strong>  Telefono: </strong> {{$employee_goal->goal->telefono}}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="glyphicon glyphicon-pushpin"></i>
+                                            <strong>  Representante: </strong> {{$employee_goal->goal->representante}}
+                                        </li>
+                                    </ul>
 
                                     <p>
-                                        {!! link_to_route('empleados.show', $title = "Ver empleado", $parameters = $employee_goal->goal->id, $attributes=['class'=>'btn btn-success'])!!}
+                                        {!! link_to_route('objetivos.show', $title = "Ver informacion ", $parameters = $employee_goal->goal->id, $attributes=['class'=>'btn btn-success'])!!}
 
                                     </p>
                                 </div>
@@ -67,7 +99,7 @@
                             {!!Form::label('Selecciona el mes.',null,['class'=>'form-control label label-success'])!!}
                             <div class="panel-body">
                                 <select class="form-control" name="meselegido">
-                                    <option value="1">Enero</option>
+                                    {{-- <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
                                     <option value="3">Marzo</option>
                                     <option value="4">Abril</option>
@@ -76,7 +108,7 @@
                                     <option value="7">Julio</option>
                                     <option value="8">Agosto</option>
                                     <option value="9">Septiembre</option>
-                                    <option value="10">Octubre</option>
+                                    <option value="10">Octubre</option> --}}
                                     <option value="11">Noviembre</option>
                                     <option value="12">Diciembre</option>
                                 </select>
@@ -130,13 +162,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -191,13 +217,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -252,13 +272,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -313,13 +327,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -374,13 +382,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -435,13 +437,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}
@@ -496,13 +492,7 @@
                                                         {{-- Jornada --}}
                                                             {!! Form::label('Tipo Jornada',null,['class'=>'label label-primary']) !!}
 
-                                                            {{-- jornadas --}}
-                                                                <select class="form-control" name="">
-                                                                    <option value="option">Matutino</option>
-                                                                    <option value="option">Vespertino</option>
-                                                                    <option value="option">Diurno</option>
-                                                                </select>
-                                                            {{-- jornadas --}}
+
                                                         {{-- Jornada --}}
                                                     </div>
                                                     {{-- Box para activar *--}}

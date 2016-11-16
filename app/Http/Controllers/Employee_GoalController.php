@@ -35,6 +35,7 @@ class Employee_GoalController extends Controller
                     DB::raw("CONCAT(employees.nombre,' ',employees.apellido) AS full_name , id")
                     )->lists('full_name','id');
         $goals = Goal::lists('direccion','id');
+
         return view('Employee_Goal.Create',compact('employees','goals'));
 
     }

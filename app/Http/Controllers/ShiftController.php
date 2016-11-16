@@ -50,7 +50,14 @@ class ShiftController extends Controller
                     DB::raw("CONCAT(employees.nombre,' ',employees.apellido) AS full_name , id")
                     )->lists('full_name','id');
         $goals = Goal::all()->pluck('direccion','id');
-        return view('Shift.create',compact('employees','goals'));
+        if (count($employees) > 0) {
+            if (count($goals)) {
+                return view('Shift.create',compact('employees','goals'));
+            }
+            return view('Goal.create');
+        }
+
+        return view('Employee.Create');
     }
 
     /**
