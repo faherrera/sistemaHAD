@@ -9,6 +9,7 @@ use SistemaHAD\Http\Controllers\Controller;
 use SistemaHAD\Employee;
 use SistemaHAD\Goal;
 use SistemaHAD\Employee_Goal;
+use SistemaHAD\Shift_Detail;
 use Session;
 use Redirect;
 class EmployeeController extends Controller
@@ -62,11 +63,12 @@ class EmployeeController extends Controller
     {
          $employee = Employee::find($id);
          $getGoal = Employee_Goal::where('employee_id',$id)->get();
+         $getDetailShifts = Shift_Detail::where('employee_id',$id)->get();
         // $relacion = Employee_Goal::select('goal_id')->where('employee_id','=',$id)->get();
         // $goal = Goal::find($relacion);
         // $goal_employees = Employee_Goal::getEmployee($id)->get();
 
-        return view('Employee.Show',compact('employee','getGoal'));
+        return view('Employee.Show',compact('employee','getGoal','getDetailShifts'));
     }
 
     /**

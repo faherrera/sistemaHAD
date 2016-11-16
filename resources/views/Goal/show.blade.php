@@ -1,6 +1,26 @@
 @extends('layouts.admin')
     @section('content')
     <!--  Section Content Yield-->
+    @if (Session::has('message-danger'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <ul>
+                  <li>
+                      <i class="glyphicon glyphicon-calendar"></i> <strong>{{ Session::get('message-danger') }}</strong>
+                  </li>
+          </ul>
+        </div>
+    @endif
+    @if (Session::has('message'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <ul>
+                  <li>
+                      <i class="glyphicon glyphicon-calendar"></i> <strong>{{ Session::get('message') }}</strong>
+                  </li>
+          </ul>
+        </div>
+    @endif
         <section class="content">
 
             <section class="box-objetivo-detalle__container">
@@ -31,8 +51,11 @@
                                     </li>
                                 </ul>
                                 <p>
-                                    <a href="./objetivos/detalle.html" class="btn btn-primary" role="button">Editar</a>
-                                    <a href="./objetivos/detalle.html" class="btn btn-danger" role="button"> Eliminar</a>
+                                    {!!link_to_route('objetivos.edit',$title='Editar',$parameters = $goal->id ,$attributes = ['class'=>'btn btn-primary'])!!}
+
+                                    {!! Form::open(['route'=>['objetivos.destroy',$goal->id],'method'=>'DELETE']) !!}
+                                        {!! Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
+                                    {!! Form::close() !!}
                                 </p>
                             </div>
                         </div>
@@ -83,223 +106,71 @@
                         <!-- Tabla Empleados -->
 
                         <!-- Tabla Turnos -->
-                        <div class="table-responsive">
-                            <div class="panel panel-default">
+                            <div class="panel panel-default table-responsive">
                                 <!-- Default panel contents -->
-                                <div class="panel-heading"><strong>Turnos del mes</strong></div>
+                                <div class="panel-heading"><strong>Turnos del mes</strong> <span class="badge">{{count($getDetailShifts)}}</span></div>
                                 <!-- Table -->
-                                <table class=" table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Inicio</th>
-                                            <th>Finalizacion</th>
-                                            <th>Jornada</th>
-                                            <th>Editar Turno</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Vespertino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Matutino</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Diurno</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
-                                        <!--  Turno #-->
-                                        <tr>
-                                            <td>03/10/2016 20:00:00</td>
-                                            <td>04/10/2016 05:00:00</td>
-                                            <td>Diurno</td>
-                                            <td>
-                                                <a href="#">
-                                                    <strong>
-                                                        <i class="glyphicon glyphicon-pencil">
-                                                        </i>
-                                                    </strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <!--  Turno #-->
+                                @if (count($getDetailShifts) > 0)
 
-                                    </tbody>
-                                </table>
+                                        <table class=" table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Inicio</th>
+                                                <th>Finalizacion</th>
+                                                <th>Asistencia</th>
+                                                <th>Feriado</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--  Turno #-->
+                                            @foreach ($getDetailShifts as $detail)
+                                                <tr>
+                                                    <?php
+                                                        $fechaOriginalInicio = $detail->inicio;
+                                                        $fechaModificadaInicio = date("d-m-Y H:m", strtotime($fechaOriginalInicio));
+
+                                                        $fechaOriginalFinalizacion = $detail->finalizacion;
+                                                        $fechaModificadaFinalizacion = date("d-m-Y H:m", strtotime($fechaOriginalFinalizacion));
+                                                     ?>
+                                                    <td>{{$fechaModificadaInicio}}</td>
+                                                    <td>{{$fechaModificadaFinalizacion}}</td>
+                                                        {{-- Control de asistencia --}}
+                                                            @if ($detail->asistencia == 0)
+                                                                <td><i class="glyphicon glyphicon-remove" style="color:red">No</i></td>
+                                                            @else
+                                                                <td><i class="glyphicon glyphicon-ok" style="color:green">Si</i></td>
+
+                                                            @endif
+                                                        {{-- Control de asistencia --}}
+
+                                                        {{-- Control de asistencia --}}
+                                                            @if ($detail->feriado == 0)
+                                                                <td><i class="glyphicon glyphicon-remove" style="color:red">No</i></td>
+                                                            @else
+                                                                <td><i class="glyphicon glyphicon-ok" style="color:green">Si</i></td>
+
+                                                            @endif
+                                                        {{-- Control de asistencia --}}
+                                                    <td>
+                                                        {!!link_to_route('turnos.edit', $title = "Modificar", $parameters = $detail->id, $attributes = ['class'=>'btn btn-primary']) !!}
+
+                                                        {!! Form::open(['route'=>['turnos.destroy',$detail->id],'method'=>'DELETE']) !!}
+                                                            {!! Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
+                                                        {!! Form::close() !!}
+
+                                                        {{-- {!! link_to_action('Controller', $title, $parameters, $attributes) !!} --}}
+                                                    </td>
+                                                </tr>
+                                                <!--  Turno #-->
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+
                             </div>
                         </div>
-
-                        <!-- Tabla Turnos -->
 
                     </div>
                     <!--  Detalle informacion-->

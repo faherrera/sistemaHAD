@@ -1,18 +1,12 @@
 @extends('layouts.admin')
     @section('content')
         <section class="content">
-            @if(Session::has('message'))
-                <div class="alert alert-success alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <strong>{{Session::get('message')}}</strong>
-                </div>
-            @endif
             <div class="container">
                 <!-- Tabla Empleados Fijos Sin Turnos Asignados -->
                 <div class="table-responsive">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading"><strong>Empleados fijos sin turnos asignados este mes <span class="badge"> {{count($employee_goals)}}</span></strong></div>
+                        <div class="panel-heading"><strong>Estos son todos los empleados fijos que tiene la empresa <span class="badge"> {{count($employee_goals)}}</span></strong></div>
                         <!-- Table -->
                         <table class=" table table-hover">
                             <thead>
@@ -44,7 +38,7 @@
                                     <tr>
                                         <td>
 
-                                            <i> No hay empleados con turnos asignados para este mes</i>
+                                            <i> No hay empleados fijos</i>
                                         </td>
                                     </tr>
 
@@ -60,38 +54,41 @@
                 <div class="table-responsive">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading"><strong>Empleados con turnos asignados para el mes de </strong></div>
+                        <div class="panel-heading"><strong>Empleados con turnos asignados para este mes <span class="badge">{{count($empleadosTurnosEsteMes)}}</span></strong></div>
                         <!-- Table -->
                         <table class=" table table-hover">
                             <thead>
                                 <tr>
                                     <th>Empleado fijo</th>
-                                    <th>Nombre Objetivo asignado</th>
                                     <th>Direccion Objetivo asignado</th>
-                                    <th>Ver detalle de los turnos</th>
+                                    <th>Ver Empleado</th>
 
                                     {{-- <th>Ver turno mensual</th>
                                     <th>Editar Turno</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--  Informacion #-->
-                                <tr>
-                                    <td> Jesus Figueroa</td>
-                                    <td> Santiago 871</td>
-                                    <td> Santiago 871</td>
-                                    <td> <a href="#"><i class="glyphicon glyphicon-cog"></i></a></td>
-                                </tr>
-                                <!--  Informacion #-->
 
-                                <!--  Informacion #-->
-                                <tr>
-                                    <td> Jhonnatan Figueroa</td>
-                                    <td> Torre A6</td>
-                                    <td> Sarmiento 1871</td>
-                                    <td> <a href="#"><i class="glyphicon glyphicon-cog"></i></a></td>
-                                </tr>
-                                <!--  Informacion #-->
+                                @if(count($empleadosTurnosEsteMes) > 0)
+                                    <!--  Informacion #-->
+                                    @foreach($empleadosTurnosEsteMes as $empleadoDetalleTurno)
+                                        <tr>
+                                            <td> {{ $empleadoDetalleTurno->employee->nombre}}</td>
+                                            <td> {{ $empleadoDetalleTurno->goal->direccion}}</td>
+                                            <td> <a href="/empleados/{{$empleadoDetalleTurno->employee->id}}" type="button" class="btn btn-primary">Ver Turnos del empleado</a></td>
+                                        </tr>
+                                    @endforeach
+                                    <!--  Informacion #-->
+                                @else
+
+                                    <tr>
+                                        <td>
+
+                                            <i> No hay empleados con turnos asignados para este mes</i>
+                                        </td>
+                                    </tr>
+
+                                @endif
 
                             </tbody>
                         </table>

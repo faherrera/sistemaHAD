@@ -16,9 +16,6 @@
 {!! Form::label('Direccion') !!}
 {!! Form::text('direccion',null,['placeholder'=>'Av. Independencia 2015']) !!}
 
-{!! Form::label('Adelanto de dinero $:') !!}
-{!! Form::text('advanced',null,['placeholder'=>'Ej: 30']) !!}
-
 {!! Form::label('Tipo de empleado') !!}
 {!! Form::select('puesto',['fijo'=>'Fijo','supervisor'=>'Supervisor','relevo'=>'Relevo']) !!}
    <br>

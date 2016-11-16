@@ -13,7 +13,7 @@ class helperController extends Controller
 {
     static function verificarMes($mes,$idempleado,$idobjetivo){
         // $turno = DB::table('shifts')->where('month', $mes)->get();
-        $resultadoConsulta = Shift::where('month',$mes)->where('employee_id', $idempleado)->where('goal_id', $idobjetivo)->get();
+         $resultadoConsulta = Shift::where('month',$mes)->where('employee_id', $idempleado)->where('goal_id', $idobjetivo)->get();
         // echo $resultadoConsulta;
 
 

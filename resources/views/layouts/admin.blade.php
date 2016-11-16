@@ -26,7 +26,7 @@
           <!-- El logotipo y el icono que despliega el menú se agrupan
                para mostrarlos mejor en los dispositivos móviles -->
           <div class="navbar-header">
-              <img src="../assets/images/logotipo/64.png" class="admin-menu__img-logo"alt="">
+              <img src="{{asset('/assets/images/logotipo/64.png')}}" class="admin-menu__img-logo"alt="">
 
             <button type="button" class="navbar-toggle" data-toggle="collapse"
                     data-target=".navbar-ex1-collapse">
@@ -51,9 +51,9 @@
                   Turnos <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Crear Turnos</a></li>
+                  <li><a href="{{URL::to('/turnos/create')}}">Crear Turno </a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Ver listado de turnos</a></li>
+                  <li><a href="{{URL::to('/turnos/')}}">Ver listado de turnos</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -61,9 +61,9 @@
                   Objetivos <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Crear Objetivos</a></li>
+                  <li><a href="{{URL::to('/objetivos/create')}}">Crear Objetivos</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Ver listado de Objetivos</a></li>
+                  <li><a href="{{URL::to('/objetivos')}}">Ver listado de Objetivos</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -71,9 +71,9 @@
                   Empleados <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Crear empleado</a></li>
+                  <li><a href="{{URL::to('/empleados/create')}}">Crear empleado</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Ver listado de empleados</a></li>
+                  <li><a href="{{URL::to('/empleados/')}}">Ver listado de empleados</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -81,9 +81,9 @@
                   Enlazar Objetivos y empleados <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Crear Enlace</a></li>
+                  <li><a href="{{URL::to('/relacionEG/create')}}">Crear Enlace</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Ver enlace</a></li>
+                  {{-- <li><a href="{{URL::to('/generarTurno/create')}}">Generar Turno </a></li> --}}
                 </ul>
               </li>
             </ul>

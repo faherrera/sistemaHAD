@@ -5,11 +5,13 @@ namespace SistemaHAD\Http\Controllers;
 use Illuminate\Http\Request;
 
 use SistemaHAD\Http\Requests;
+use SistemaHAD\Http\Requests\GoalRequest;
 use SistemaHAD\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use SistemaHAD\Goal;
 use SistemaHAD\Employee_Goal;
+use SistemaHAD\Shift_Detail;
 class GoalController extends Controller
 {
     /**
@@ -39,7 +41,7 @@ class GoalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GoalRequest $request)
     {
 
         if (empty($request->path)) {
@@ -64,8 +66,9 @@ class GoalController extends Controller
     {
         $goal = Goal::find($id);
         $getEmployees = Employee_Goal::where('goal_id', $id)->get();
+        $getDetailShifts = Shift_Detail::where('goal_id',$id)->get();
 
-        return view('Goal.show',compact('goal','getEmployees'));
+        return view('Goal.show',compact('goal','getEmployees','getDetailShifts'));
     }
 
     /**
@@ -76,7 +79,8 @@ class GoalController extends Controller
      */
     public function edit($id)
     {
-        //
+         $goal = Goal::find($id);
+        return view('Goal.Edit',compact('goal'));
     }
 
     /**
@@ -86,9 +90,14 @@ class GoalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GoalRequest $request, $id)
     {
-        //
+        $goal = Goal::find($id);
+        $goal->fill($request->all());
+        $goal->save();
+        // return $request->all();
+        Session::flash('message','Objetivo Editado correctamente.');
+        return Redirect('/objetivos');
     }
 
     /**
@@ -99,6 +108,10 @@ class GoalController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $goal = Goal::find($id);
+
+        $goal->delete();
+
+        Session::flash('message-danger','Objetivo Borrado correctamente.');
+        return Redirect('/objetivos');    }
 }

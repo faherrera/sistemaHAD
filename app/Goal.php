@@ -18,4 +18,7 @@ class Goal extends Model
     public function Employee_goals(){
         return $this->hasMany('SistemaHAD\Employee_Goal');
     }
+    public function Shift_Details(){
+        return $this->hasMany('SistemaHAD\Shift_Detail');
+    }
 }

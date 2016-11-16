@@ -8,7 +8,7 @@ class Employee extends Model
 {
     protected $table = "employees";
 
-    protected $fillable = ['nombre','apellido','legajo','DNI','direccion','telefono','puesto','path','notes','advanced'];
+    protected $fillable = ['nombre','apellido','legajo','DNI','direccion','telefono','puesto','path','notes'];
 
     public function setPathAttribute($path){
         $name = Carbon::now()->second.$path->getClientOriginalName();
@@ -18,5 +18,8 @@ class Employee extends Model
 
     public function employee_goals(){
         return $this->hasMany('SistemaHAD\Employee_Goal');
+    }
+    public function Shifts(){
+        return $this->hasMany('SistemaHAD\Shift_Detail');
     }
 }

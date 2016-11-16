@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeeGoalsTable extends Migration
+class AddContraintsToGoalEmployees extends Migration
 {
     /**
      * Run the migrations.
@@ -17,14 +17,13 @@ class CreateEmployeeGoalsTable extends Migration
 
             // Employee relation
             $table->integer('employee_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             // Goals Relation
             $table->integer('goal_id')->unsigned();
             $table->foreign('goal_id')
                     ->references('id')
-                    ->on('goals');
+                    ->on('goals')->onDelete('cascade') ;
             $table->timestamps();
-
         });
     }
 
@@ -35,6 +34,8 @@ class CreateEmployeeGoalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('employee__goals');
+        Schema::table('employee__goals', function (Blueprint $table) {
+            //
+        });
     }
 }
