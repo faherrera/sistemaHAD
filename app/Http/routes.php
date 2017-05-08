@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('Front.index');
 });
 
+//Logueo.
+Route::resource('log','LogController');
+Route::resource('users','UserController');
 
 Route::resource('empleados','EmployeeController');
 
@@ -32,3 +35,20 @@ Route::resource('relacionEG','Employee_GoalController',['except'=>['index']]);
     Route::post('generarturno','ShiftController@generarTurnoCreate');
 
     // Route::get('turnos/generarturno/{$id}','ShiftController@generarTurno'); //Generacion Automatica segun ID
+
+/*
+API DE EMPLEADOS.
+*/
+
+//GET
+Route::get('api/empleados','EmployeeController@getAll');    //Todos los empleados
+Route::get('api/empleados/{legajo}','EmployeeController@getEmployee'); //Buscar Empleado.
+
+//POST
+Route::post('api/empleados','EmployeeController@createEmployee');   //Crear un empleado
+
+//PUT
+Route::put('api/empleados/{legajo}','EmployeeController@updateEmployee'); //Editar un empleado
+
+//DELETE
+Route::delete('api/empleados/{legajo}','EmployeeController@deleteEmployee'); //Editar un empleado

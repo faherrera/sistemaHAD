@@ -43,7 +43,7 @@
                 var inicio;
                 var transformacion;
                 $('#datetimepicker6').datetimepicker({
-                                    locale: 'en',
+                                    locale: 'es',
                                     format: 'YYYY/MM/DD HH:mm'
                                 });
 

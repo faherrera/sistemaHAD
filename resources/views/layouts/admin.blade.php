@@ -78,6 +78,16 @@
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Usuarios <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{URL::to('/users/create')}}">Enlazar Usuarios</a></li>
+                  <li class="divider"></li>
+                  <li><a href="{{URL::to('/users/')}}">Listado de usuarios</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Enlazar Objetivos y empleados <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
