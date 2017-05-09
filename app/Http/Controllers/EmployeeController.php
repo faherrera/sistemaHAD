@@ -151,13 +151,17 @@ class EmployeeController extends Controller
 
     public function createEmployee(Request $request){
 
+        // $request = $request->getContent();  //Obtengo el objeto json
+        // $request = json_decode($request,TRUE);  //convierto en array
+        // $employee_json = $request;
+        // return $request->all();
 
-        $request = $request->getContent();  //Obtengo el objeto json
-        $request = json_decode($request,TRUE);  //convierto en array
-        $employee_json = $request;
+        // $obj = ["objeto" => $request->all()];
+        // return $obj["objeto"]["legajo"];
 
+        return $request;
         try {
-            $employee = Employee::create($employee_json);
+            $employee = Employee::create($request->all());
             $employee->save();
             $m_array = ["Mensaje"=> "Cargado correctamente"];
             return response()->json($m_array);
@@ -210,6 +214,7 @@ class EmployeeController extends Controller
         // $legajo = $request["legajo"];
 
         // return $legajo;
+
         $employee = Employee::where('legajo',$legajo)->first();
 
         if ($employee == null) {
