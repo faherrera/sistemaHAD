@@ -159,7 +159,7 @@ class EmployeeController extends Controller
         // $obj = ["objeto" => $request->all()];
         // return $obj["objeto"]["legajo"];
 
-        return $request;
+        // return $request;
         try {
             $employee = Employee::create($request->all());
             $employee->save();
